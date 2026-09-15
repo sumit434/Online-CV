@@ -78,6 +78,216 @@
                 transform: none !important;
             }
         }
+
+        /* ---------------------------------------------------------
+           FLUID RESPONSIVE SYSTEM
+           Designed for Android/iPhone widths from ~320px upward.
+           No device-specific breakpoints are used.
+        --------------------------------------------------------- */
+
+        html {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            width: 100%;
+            min-width: 0;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        /* Prevent long words/URLs from forcing horizontal scrolling. */
+        h1, h3, h4, p, span, a {
+            overflow-wrap: anywhere;
+        }
+
+        /* Phones: 320px–767px */
+        @media (max-width: 767px) {
+            body {
+                -webkit-text-size-adjust: 100%;
+            }
+
+            /* Smaller outer gutters; keeps the original card style. */
+            body > div {
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+                padding-left: clamp(0.75rem, 4vw, 1rem) !important;
+                padding-right: clamp(0.75rem, 4vw, 1rem) !important;
+            }
+
+            /* Profile card */
+            .s8-profile-card {
+                min-height: 370px;
+            }
+
+            .s8-profile-name {
+                font-size: clamp(1.55rem, 7vw, 2rem) !important;
+                white-space: normal !important;
+                max-width: 60%;
+            }
+
+            .s8-profile-title {
+                font-size: clamp(0.72rem, 3.4vw, 0.95rem) !important;
+                white-space: normal !important;
+                max-width: 58%;
+            }
+
+            .s8-text {
+                max-width: clamp(52%, 58vw, 60%) !important;
+                font-size: clamp(0.70rem, 3vw, 0.875rem) !important;
+                margin-top: 0.75rem !important;
+            }
+
+            /* Decorative image/circle scale with screen width. */
+            .s8-profile-art {
+                height: auto !important;
+                min-height: 0 !important;
+                max-height: none !important;
+                inset: 0.75rem !important;
+            }
+
+            .s8-profile-circle {
+                width: clamp(11rem, 48vw, 16rem) !important;
+                height: clamp(11rem, 48vw, 16rem) !important;
+                right: clamp(-4.5rem, -12vw, -3rem) !important;
+                bottom: clamp(-4rem, -10vw, -2.5rem) !important;
+            }
+
+            .s8-sticker {
+                width: clamp(9.5rem, 42vw, 12rem) !important;
+                height: clamp(9.5rem, 42vw, 12rem) !important;
+                right: clamp(-0.75rem, -2vw, 0rem) !important;
+                bottom: 0 !important;
+            }
+
+            /* Skills: allow natural wrapping on every phone width. */
+            .s8-skills {
+                gap: clamp(0.75rem, 4vw, 1rem) !important;
+            }
+
+            .s8-icon {
+                width: clamp(1.75rem, 8vw, 2.25rem) !important;
+                height: clamp(1.75rem, 8vw, 2.25rem) !important;
+            }
+
+            /* Social icons scale slightly on very narrow phones. */
+            .s8-social {
+                gap: clamp(0.55rem, 2.5vw, 1rem) !important;
+                flex-wrap: wrap;
+            }
+
+            .s8-social a {
+                width: clamp(2.7rem, 12vw, 3rem) !important;
+                height: clamp(2.7rem, 12vw, 3rem) !important;
+            }
+
+            /* Projects: remove the desktop fixed 800px height on phones. */
+            .s8-projects-card {
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+            .s8-project-list {
+                min-height: 0 !important;
+            }
+
+            .s8-project-card {
+                min-height: clamp(155px, 48vw, 220px);
+                flex: none !important;
+            }
+
+            /* Hover enlargement is not useful on touch screens. */
+            .s8-project-list .s8-project-card:hover {
+                flex: none !important;
+            }
+
+            .s8-project-overlay {
+                opacity: 1 !important;
+                background: linear-gradient(
+                    to top,
+                    rgba(0,0,0,0.72),
+                    rgba(0,0,0,0.05) 65%
+                ) !important;
+                justify-content: flex-end !important;
+            }
+
+            .s8-project-overlay h4 {
+                font-size: clamp(0.78rem, 3.3vw, 0.95rem);
+            }
+
+            .s8-project-overlay p {
+                font-size: clamp(0.68rem, 2.8vw, 0.875rem);
+            }
+
+            /* Experience: let text determine card height. */
+            .s8-experience-card {
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+            .s8-experience-list {
+                justify-content: flex-start !important;
+            }
+
+            .s8-experience-item {
+                padding-top: 1.25rem !important;
+                padding-bottom: 1.25rem !important;
+            }
+
+            .s8-experience-heading {
+                flex-wrap: wrap;
+                gap: 0.25rem 0.5rem;
+            }
+
+            .s8-experience-date {
+                white-space: normal !important;
+                margin-left: 0 !important;
+            }
+        }
+
+        /* Extra-narrow phones: 320px–349px.
+           This is width-based, not device-based. */
+        @media (max-width: 349px) {
+            .s8-profile-card {
+                min-height: 350px;
+            }
+
+            .s8-profile-name,
+            .s8-profile-title,
+            .s8-text {
+                max-width: 62% !important;
+            }
+
+            .s8-sticker {
+                width: 9rem !important;
+                height: 9rem !important;
+            }
+
+            .s8-profile-circle {
+                width: 10.5rem !important;
+                height: 10.5rem !important;
+            }
+
+            .s8-skills {
+                gap: 0.65rem !important;
+            }
+        }
+
+        /* Desktop/tablet: preserve the original visual proportions. */
+        @media (min-width: 768px) {
+            .s8-profile-card {
+                min-width: 0;
+            }
+
+            .s8-project-card {
+                min-width: 0;
+            }
+        }
+
     </style>
 </head>
 <body class="grid-background bg-gray-50">
@@ -90,29 +300,22 @@
                 <div class="lg:col-span-1 flex flex-col justify-between gap-6">
                     
                     <!-- PARTITION 1: PROFILE IMAGE, GREETING, NAME & TITLE -->
-                <div class="assemble-card assemble-left delay-1 bg-white rounded-3xl p-6 shadow-lg border border-gray-200 flex flex-col justify-between flex-1 overflow-hidden relative">
+                <div class="assemble-card assemble-left delay-1 s8-profile-card bg-white rounded-3xl p-6 shadow-lg border border-gray-200 flex flex-col justify-between flex-1 overflow-hidden relative">
 
     <!-- TOP: TEXT CONTENT (LEFT ALIGNED) -->
     <div class="flex flex-col text-left z-10">
 
     <p class="text-sm text-gray-500 translate-x-1">Hi, I’m</p>
 
-    <h1 class="text-2xl sm:text-3xl xl:text-5xl font-bold text-gray-00 leading-tight tracking-tight mb-2 whitespace-nowrap">
+    <h1 class="s8-profile-name text-2xl sm:text-3xl xl:text-5xl font-bold text-gray-00 leading-tight tracking-tight mb-2 whitespace-nowrap">
         Sumit Mane
     </h1>
 
-    <p class="text-blue-600 font-semibold text-xs sm:text-sm xl:text-xl leading-snug mb-2 whitespace-nowrap">
+    <p class="s8-profile-title text-blue-600 font-semibold text-xs sm:text-sm xl:text-xl leading-snug mb-2 whitespace-nowrap">
         UI/UX &
         Graphic Designer
     </p>
 
-    <style>
-        @media (min-width: 350px) and (max-width: 380px) {
-            .s8-text {
-                max-width: 40% !important;
-            }
-        }
-    </style>
 
     <p class="s8-text text-xs sm:text-sm text-gray-600 leading-relaxed max-w-[50%] sm:max-w-[50%] md:max-w-[50%] xl:max-w-[52%] mt-4 text-justify">
        Visual Designer with 3 years across agency experience of branding, digital campaigns creating thoughtful & visually engaging digital experiences that connect brands with their audiences.
@@ -130,9 +333,9 @@
         }
     }
 </style>
-    <div class="absolute max-w-[95%] h-85 top-3 left-3 right-3 bottom-3 z-3 flex items-center justify-end overflow-hidden rounded-2xl">
+    <div class="s8-profile-art absolute max-w-[95%] h-85 top-3 left-3 right-3 bottom-3 z-3 flex items-center justify-end overflow-hidden rounded-2xl">
         <!-- Masked Circle Background -->
-        <div class="absolute w-64 h-64 bg-yellow-200 rounded-full right-[-65px] bottom-[-50px]"></div>
+        <div class="s8-profile-circle absolute w-64 h-64 bg-yellow-200 rounded-full right-[-65px] bottom-[-50px]"></div>
         <!-- Hover Image Wrapper -->
         <div class="group s8-sticker absolute z-10 w-48 h-48 right-[-10px] bottom-0 cursor-pointer">
             <!-- Default Image -->
@@ -167,47 +370,47 @@
 <div class="assemble-card assemble-down delay-3 bg-white rounded-3xl py-6 px-6 shadow-lg border border-gray-200 flex flex-col">
     <h3 class="text-lg font-bold text-blue-600 mb-5 text-center">Skills</h3>
 
-    <div class="flex gap-4 justify-center flex-wrap">
+    <div class="s8-skills flex gap-4 justify-center flex-wrap">
 
         <div class="flex flex-col items-center gap-2">
             <img src="illustrator.png"
                 alt="illustrator"
-                class="s20-icon w-8 h-8 object-contain hover:scale-110 transition duration-300">
+                class="s8-icon w-8 h-8 object-contain hover:scale-110 transition duration-300">
             <span class="text-xs text-gray-600">Illustrator</span>
         </div>
 
         <div class="flex flex-col items-center gap-2">
             <img src="ps.png"
                 alt="photoshop"
-                class="s20-icon w-8 h-8 object-contain hover:scale-110 transition duration-300">
+                class="s8-icon w-8 h-8 object-contain hover:scale-110 transition duration-300">
             <span class="text-xs text-gray-600">Photoshop</span>
         </div>
 
         <div class="flex flex-col items-center gap-2">
             <img src="figma.png"
                 alt="figma"
-                class="s20-icon w-8 h-8 object-contain hover:scale-110 transition duration-300">
+                class="s8-icon w-8 h-8 object-contain hover:scale-110 transition duration-300">
             <span class="text-xs text-gray-600">Figma</span>
         </div>
 
         <div class="flex flex-col items-center gap-2">
             <img src="elementor.png"
                 alt="Elementor"
-                class="s20-icon w-9 h-9 object-contain hover:scale-110 transition duration-300">
+                class="s8-icon w-9 h-9 object-contain hover:scale-110 transition duration-300">
             <span class="text-xs text-gray-600">Elementor</span>
         </div>
 
         <div class="flex flex-col items-center gap-2">
             <img src="html.png"
                 alt="HTML"
-                class="s20-icon w-9 h-9 object-contain hover:scale-110 transition duration-300">
+                class="s8-icon w-9 h-9 object-contain hover:scale-110 transition duration-300">
             <span class="text-xs text-gray-600">HTML</span>
         </div>
 
         <div class="flex flex-col items-center gap-2">
             <img src="css.png"
                 alt="CSS"
-                class="s20-icon w-9 h-9 object-contain hover:scale-110 transition duration-300">
+                class="s8-icon w-9 h-9 object-contain hover:scale-110 transition duration-300">
             <span class="text-xs text-gray-600">CSS</span>
         </div>
 
@@ -224,7 +427,7 @@
                         </a>
 
                         <!-- Social Icons -->
-                        <div class="flex gap-4 justify-center">
+                        <div class="s8-social flex gap-4 justify-center">
                             <a 
                                 href="tel:+917021127377" 
                                 class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-blue-600 transition duration-300 shadow-sm group"
@@ -286,13 +489,13 @@
 
       <!-- MIDDLE SECTION - PROJECTS -->
 <div class="lg:col-span-1">
-    <div class="assemble-card assemble-up delay-2 bg-white rounded-3xl py-5 px-6 shadow-lg border border-gray-200 flex flex-col h-[800px]">
+    <div class="s8-projects-card assemble-card assemble-up delay-2 bg-white rounded-3xl py-5 px-6 shadow-lg border border-gray-200 flex flex-col h-[800px]">
 
         <!-- Title -->
         <h3 class="text-2xl font-bold text-blue-600 mb-4">Projects</h3>
 
         <!-- Cards Wrapper -->
-        <div class="flex flex-col gap-4 flex-1 min-h-0 group">
+        <div class="s8-project-list flex flex-col gap-4 flex-1 min-h-0 group">
 
             <!-- Project Card 1 -->
             <a href="https://www.behance.net/gallery/236468355/Freelancer-Landing-Page-and-Mobile-App-UI"
@@ -304,9 +507,7 @@
                      class="w-full h-full object-cover"
                 >
 
-                <div class="absolute inset-0 bg-black/60 opacity-0 
-                            hover:opacity-100 transition duration-300 
-                            flex flex-col justify-between p-4">
+                <div class="s8-project-overlay absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition duration-300 flex flex-col justify-between p-4">
                     <div>
                         <h4 class="text-white font-semibold mb-1">Freelancer- Landing Page & Mobile App UI</h4>
                         <p class="text-sm text-gray-200">Modern Hiring Experience</p>
@@ -324,9 +525,7 @@
                      class="w-full h-full object-cover top-2"
                 >
 
-                <div class="absolute inset-0 bg-black/60 opacity-0 
-                            hover:opacity-100 transition duration-300 
-                            flex flex-col justify-between p-4">
+                <div class="s8-project-overlay absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition duration-300 flex flex-col justify-between p-4">
                     <div>
                         <h4 class="text-white font-semibold mb-1">Expenso- E-wallet & expense tracker app</h4>
                         <p class="text-sm text-gray-200">Modern UI design</p>
@@ -344,9 +543,7 @@
                      class="w-full h-full object-cover"
                 >
 
-                <div class="absolute inset-0 bg-black/60 opacity-0 
-                            hover:opacity-100 transition duration-300 
-                            flex flex-col justify-between p-4">
+                <div class="s8-project-overlay absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition duration-300 flex flex-col justify-between p-4">
                     <div>
                         <h4 class="text-white font-semibold mb-1">Numor- Social media</h4>
                         <p class="text-sm text-gray-200">Cosmetic digital ad creatives</p>
@@ -366,15 +563,15 @@
 </div>
                 <!-- RIGHT SECTION - EXPERIENCE -->
                 <div class="lg:col-span-1">
-                    <div class="assemble-card assemble-right delay-4 bg-white rounded-3xl py-5 px-6 shadow-lg border border-gray-200 h-full flex flex-col">
+                    <div class="s8-experience-card assemble-card assemble-right delay-4 bg-white rounded-3xl py-5 px-6 shadow-lg border border-gray-200 h-full flex flex-col">
                         <h3 class="text-2xl font-bold text-blue-600 mb-6">Experience</h3>
                         
-                        <div class="flex flex-col flex-1 justify-around">
+                        <div class="s8-experience-list flex flex-col flex-1 justify-around">
                             <!-- Experience Item 1 -->
-                            <div class="pb-6 border-b border-gray-300">
-                                <div class="flex justify-between items-start mb-2">
+                            <div class="s8-experience-item pb-6 border-b border-gray-300">
+                                <div class="s8-experience-heading flex justify-between items-start mb-2">
                                     <h4 class="font-bold text-gray-900">Junior Designer</h4>
-                                    <span class="text-xs text-gray-500 whitespace-nowrap ml-2">2024 - Present</span>
+                                    <span class="s8-experience-date text-xs text-gray-500 whitespace-nowrap ml-2">2024 - Present</span>
                                 </div>
                                 <p class="text-sm italic text-gray-600 mb-3">Studio Unfold</p>
                                 <p class="text-sm text-gray-600 leading-relaxed">
@@ -383,10 +580,10 @@
                             </div>
 
                             <!-- Experience Item 2 -->
-                            <div class="py-6 border-b border-gray-300">
-                                <div class="flex justify-between items-start mb-2">
+                            <div class="s8-experience-item py-6 border-b border-gray-300">
+                                <div class="s8-experience-heading flex justify-between items-start mb-2">
                                     <h4 class="font-bold text-gray-900">Visualizer</h4>
-                                    <span class="text-xs text-gray-500 whitespace-nowrap ml-2">2023 - 2024</span>
+                                    <span class="s8-experience-date text-xs text-gray-500 whitespace-nowrap ml-2">2023 - 2024</span>
                                 </div>
                                 <p class="text-sm italic text-gray-600 mb-3">Tidal 7</p>
                                 <p class="text-sm text-gray-600 leading-relaxed">
@@ -395,10 +592,10 @@
                             </div>
 
                             <!-- Experience Item 3 -->
-                            <div class="pt-6">
-                                <div class="flex justify-between items-start mb-2">
+                            <div class="s8-experience-item pt-6">
+                                <div class="s8-experience-heading flex justify-between items-start mb-2">
                                     <h4 class="font-bold text-gray-900">Video Editor</h4>
-                                    <span class="text-xs text-gray-500 whitespace-nowrap ml-2">2022</span>
+                                    <span class="s8-experience-date text-xs text-gray-500 whitespace-nowrap ml-2">2022</span>
                                 </div>
                                 <p class="text-sm italic text-gray-600 mb-3">Seasons by Shalini</p>
                                 <p class="text-sm text-gray-600 leading-relaxed">
