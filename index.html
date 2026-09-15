@@ -81,8 +81,6 @@
 
         /* ---------------------------------------------------------
            FLUID RESPONSIVE SYSTEM
-           Designed for Android/iPhone widths from ~320px upward.
-           No device-specific breakpoints are used.
         --------------------------------------------------------- */
 
         html {
@@ -105,13 +103,29 @@
             overflow-wrap: anywhere;
         }
 
+        /* Fluid scale sticker and masked circle for standard & desktop screens */
+        .s8-sticker {
+            width: clamp(8.5rem, 13vw, 12rem) !important;
+            aspect-ratio: 1 / 1;
+            height: auto !important;
+            right: clamp(-0.75rem, -1vw, 0rem) !important;
+            bottom: 0 !important;
+        }
+
+        .s8-profile-circle {
+            width: clamp(10.5rem, 16vw, 16rem) !important;
+            aspect-ratio: 1 / 1;
+            height: auto !important;
+            right: clamp(-4.5rem, -5vw, -3rem) !important;
+            bottom: clamp(-3.5rem, -4vw, -2.5rem) !important;
+        }
+
         /* Phones: 320px–767px */
         @media (max-width: 767px) {
             body {
                 -webkit-text-size-adjust: 100%;
             }
 
-            /* Smaller outer gutters; keeps the original card style. */
             body > div {
                 padding-top: 1rem !important;
                 padding-bottom: 1rem !important;
@@ -142,7 +156,6 @@
                 margin-top: 0.75rem !important;
             }
 
-            /* Decorative image/circle scale with screen width. */
             .s8-profile-art {
                 height: auto !important;
                 min-height: 0 !important;
@@ -150,22 +163,24 @@
                 inset: 0.75rem !important;
             }
 
+            /* Proportional fluid scaling for mobile devices */
             .s8-profile-circle {
-                width: clamp(11rem, 48vw, 16rem) !important;
-                height: clamp(11rem, 48vw, 16rem) !important;
-                right: clamp(-4.5rem, -12vw, -3rem) !important;
-                bottom: clamp(-4rem, -10vw, -2.5rem) !important;
+                width: clamp(9.5rem, 44vw, 14.5rem) !important;
+                aspect-ratio: 1 / 1;
+                height: auto !important;
+                right: clamp(-3.5rem, -8vw, -2rem) !important;
+                bottom: clamp(-3rem, -6vw, -1.5rem) !important;
             }
 
             .s8-sticker {
-                width: clamp(9.5rem, 42vw, 12rem) !important;
-                height: clamp(9.5rem, 42vw, 12rem) !important;
-                right: clamp(-0.75rem, -2vw, 0rem) !important;
+                width: clamp(7.5rem, 36vw, 11rem) !important;
+                aspect-ratio: 1 / 1;
+                height: auto !important;
+                right: clamp(-0.5rem, -1.5vw, 0rem) !important;
                 bottom: 0 !important;
             }
 
-            /* Skills: ALWAYS keep all 6 icons on one line.
-               Icons shrink as the available phone width gets smaller. */
+            /* Skills */
             .s8-skills {
                 flex-wrap: nowrap !important;
                 gap: clamp(0.25rem, 2vw, 0.75rem) !important;
@@ -193,7 +208,7 @@
                 word-break: normal;
             }
 
-            /* Social icons scale slightly on very narrow phones. */
+            /* Social icons */
             .s8-social {
                 gap: clamp(0.55rem, 2.5vw, 1rem) !important;
                 flex-wrap: wrap;
@@ -204,7 +219,7 @@
                 height: clamp(2.7rem, 12vw, 3rem) !important;
             }
 
-            /* Projects: remove the desktop fixed 800px height on phones. */
+            /* Projects */
             .s8-projects-card {
                 height: auto !important;
                 min-height: 0 !important;
@@ -219,7 +234,6 @@
                 flex: none !important;
             }
 
-            /* Hover enlargement is not useful on touch screens. */
             .s8-project-list .s8-project-card:hover {
                 flex: none !important;
             }
@@ -242,7 +256,7 @@
                 font-size: clamp(0.68rem, 2.8vw, 0.875rem);
             }
 
-            /* Experience: let text determine card height. */
+            /* Experience */
             .s8-experience-card {
                 height: auto !important;
                 min-height: 0 !important;
@@ -268,8 +282,7 @@
             }
         }
 
-        /* Extra-narrow phones: 320px–349px.
-           This is width-based, not device-based. */
+        /* Extra-narrow phones: 320px–349px */
         @media (max-width: 349px) {
             .s8-profile-card {
                 min-height: 350px;
@@ -282,13 +295,15 @@
             }
 
             .s8-sticker {
-                width: 9rem !important;
-                height: 9rem !important;
+                width: 7.2rem !important;
+                aspect-ratio: 1 / 1;
+                height: auto !important;
             }
 
             .s8-profile-circle {
-                width: 10.5rem !important;
-                height: 10.5rem !important;
+                width: 9rem !important;
+                aspect-ratio: 1 / 1;
+                height: auto !important;
             }
 
             .s8-skills {
@@ -302,7 +317,7 @@
             }
         }
 
-        /* Desktop/tablet: preserve the original visual proportions. */
+        /* Desktop/tablet */
         @media (min-width: 768px) {
             .s8-profile-card {
                 min-width: 0;
@@ -312,7 +327,6 @@
                 min-width: 0;
             }
         }
-
     </style>
 </head>
 <body class="grid-background bg-gray-50">
@@ -325,122 +339,100 @@
                 <div class="lg:col-span-1 flex flex-col justify-between gap-6">
                     
                     <!-- PARTITION 1: PROFILE IMAGE, GREETING, NAME & TITLE -->
-                <div class="assemble-card assemble-left delay-1 s8-profile-card bg-white rounded-3xl p-6 shadow-lg border border-gray-200 flex flex-col justify-between flex-1 overflow-hidden relative">
+                    <div class="assemble-card assemble-left delay-1 s8-profile-card bg-white rounded-3xl p-6 shadow-lg border border-gray-200 flex flex-col justify-between flex-1 overflow-hidden relative">
 
-    <!-- TOP: TEXT CONTENT (LEFT ALIGNED) -->
-    <div class="flex flex-col text-left z-10">
+                        <!-- TOP: TEXT CONTENT (LEFT ALIGNED) -->
+                        <div class="flex flex-col text-left z-10">
+                            <p class="text-sm text-gray-500 translate-x-1">Hi, I’m</p>
 
-    <p class="text-sm text-gray-500 translate-x-1">Hi, I’m</p>
+                            <h1 class="s8-profile-name text-2xl sm:text-3xl xl:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-2 whitespace-nowrap">
+                                Sumit Mane
+                            </h1>
 
-    <h1 class="s8-profile-name text-2xl sm:text-3xl xl:text-5xl font-bold text-gray-00 leading-tight tracking-tight mb-2 whitespace-nowrap">
-        Sumit Mane
-    </h1>
+                            <p class="s8-profile-title text-blue-600 font-semibold text-xs sm:text-sm xl:text-xl leading-snug mb-2 whitespace-nowrap">
+                                UI/UX & Graphic Designer
+                            </p>
 
-    <p class="s8-profile-title text-blue-600 font-semibold text-xs sm:text-sm xl:text-xl leading-snug mb-2 whitespace-nowrap">
-        UI/UX &
-        Graphic Designer
-    </p>
+                            <p class="s8-text text-xs sm:text-sm text-gray-600 leading-relaxed max-w-[50%] sm:max-w-[50%] md:max-w-[50%] xl:max-w-[52%] mt-4 text-justify">
+                               Visual Designer with 3 years across agency experience of branding, digital campaigns creating thoughtful & visually engaging digital experiences that connect brands with their audiences.
+                            </p>
+                        </div>
 
+                        <!-- BOTTOM: MASKED CIRCLE & HOVERING IMAGE -->
+                        <div class="s8-profile-art absolute max-w-[95%] h-85 top-3 left-3 right-3 bottom-3 z-3 flex items-center justify-end overflow-hidden rounded-2xl">
+                            <!-- Masked Circle Background -->
+                            <div class="s8-profile-circle absolute bg-yellow-200 rounded-full"></div>
+                            <!-- Hover Image Wrapper -->
+                            <div class="group s8-sticker absolute z-10 cursor-pointer">
+                                <!-- Default Image -->
+                                <img
+                                    src="hover1.png"
+                                    alt="Sumit Mane"
+                                    class="w-full h-full object-contain transition duration-500 group-hover:opacity-0"
+                                >
 
-    <p class="s8-text text-xs sm:text-sm text-gray-600 leading-relaxed max-w-[50%] sm:max-w-[50%] md:max-w-[50%] xl:max-w-[52%] mt-4 text-justify">
-       Visual Designer with 3 years across agency experience of branding, digital campaigns creating thoughtful & visually engaging digital experiences that connect brands with their audiences.
+                                <!-- Hover Image -->
+                                <img
+                                    src="hover2.png"
+                                    alt="Sumit Mane hover illustration"
+                                    class="absolute inset-0 w-full h-full object-contain opacity-0 transition duration-500 group-hover:opacity-100"
+                                >
+                            </div>
+                        </div>
 
-    </p>
-
-</div>
-
-    <!-- BOTTOM: MASKED CIRCLE & HOVERING IMAGE -->
-     <style>
-    @media (min-width: 350px) and (max-width: 380px) {
-        .s8-sticker {
-            width: 180px !important;
-            height: 180px !important;
-        }
-    }
-</style>
-    <div class="s8-profile-art absolute max-w-[95%] h-85 top-3 left-3 right-3 bottom-3 z-3 flex items-center justify-end overflow-hidden rounded-2xl">
-        <!-- Masked Circle Background -->
-        <div class="s8-profile-circle absolute w-64 h-64 bg-yellow-200 rounded-full right-[-65px] bottom-[-50px]"></div>
-        <!-- Hover Image Wrapper -->
-        <div class="group s8-sticker absolute z-10 w-48 h-48 right-[-10px] bottom-0 cursor-pointer">
-            <!-- Default Image -->
-            <img
-                src="hover1.png"
-                alt="Sumit Mane"
-                class="w-full h-full object-contain transition duration-500 group-hover:opacity-0"
-            >
-
-            <!-- Hover Image -->
-            <img
-                src="hover2.png"
-                alt="Sumit Mane hover illustration"
-                class="absolute inset-0 w-full h-full object-contain opacity-0 transition duration-500 group-hover:opacity-100"
-            >
-        </div>
-    </div>
-
-</div>
+                    </div>
 
                     <!-- PARTITION 2: SKILLS WITH ICONS -->
-                    <style>
-    /* Only for Samsung S20 Ultra-size screens */
-    @media (min-width: 400px) and (max-width: 430px) {
-        .s20-icon {
-            width: 24px !important;
-            height: 24px !important;
-        }
-    }
-</style>
+                    <div class="assemble-card assemble-down delay-3 bg-white rounded-3xl py-6 px-6 shadow-lg border border-gray-200 flex flex-col">
+                        <h3 class="text-lg font-bold text-blue-600 mb-5 text-center">Skills</h3>
 
-<div class="assemble-card assemble-down delay-3 bg-white rounded-3xl py-6 px-6 shadow-lg border border-gray-200 flex flex-col">
-    <h3 class="text-lg font-bold text-blue-600 mb-5 text-center">Skills</h3>
+                        <div class="s8-skills flex gap-4 justify-center flex-wrap">
 
-    <div class="s8-skills flex gap-4 justify-center flex-wrap">
+                            <div class="flex flex-col items-center gap-2">
+                                <img src="illustrator.png"
+                                    alt="illustrator"
+                                    class="s8-icon w-8 h-8 object-contain hover:scale-110 transition duration-300">
+                                <span class="text-xs text-gray-600">Illustrator</span>
+                            </div>
 
-        <div class="flex flex-col items-center gap-2">
-            <img src="illustrator.png"
-                alt="illustrator"
-                class="s8-icon w-8 h-8 object-contain hover:scale-110 transition duration-300">
-            <span class="text-xs text-gray-600">Illustrator</span>
-        </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <img src="ps.png"
+                                    alt="photoshop"
+                                    class="s8-icon w-8 h-8 object-contain hover:scale-110 transition duration-300">
+                                <span class="text-xs text-gray-600">Photoshop</span>
+                            </div>
 
-        <div class="flex flex-col items-center gap-2">
-            <img src="ps.png"
-                alt="photoshop"
-                class="s8-icon w-8 h-8 object-contain hover:scale-110 transition duration-300">
-            <span class="text-xs text-gray-600">Photoshop</span>
-        </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <img src="figma.png"
+                                    alt="figma"
+                                    class="s8-icon w-8 h-8 object-contain hover:scale-110 transition duration-300">
+                                <span class="text-xs text-gray-600">Figma</span>
+                            </div>
 
-        <div class="flex flex-col items-center gap-2">
-            <img src="figma.png"
-                alt="figma"
-                class="s8-icon w-8 h-8 object-contain hover:scale-110 transition duration-300">
-            <span class="text-xs text-gray-600">Figma</span>
-        </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <img src="elementor.png"
+                                    alt="Elementor"
+                                    class="s8-icon w-9 h-9 object-contain hover:scale-110 transition duration-300">
+                                <span class="text-xs text-gray-600">Elementor</span>
+                            </div>
 
-        <div class="flex flex-col items-center gap-2">
-            <img src="elementor.png"
-                alt="Elementor"
-                class="s8-icon w-9 h-9 object-contain hover:scale-110 transition duration-300">
-            <span class="text-xs text-gray-600">Elementor</span>
-        </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <img src="html.png"
+                                    alt="HTML"
+                                    class="s8-icon w-9 h-9 object-contain hover:scale-110 transition duration-300">
+                                <span class="text-xs text-gray-600">HTML</span>
+                            </div>
 
-        <div class="flex flex-col items-center gap-2">
-            <img src="html.png"
-                alt="HTML"
-                class="s8-icon w-9 h-9 object-contain hover:scale-110 transition duration-300">
-            <span class="text-xs text-gray-600">HTML</span>
-        </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <img src="css.png"
+                                    alt="CSS"
+                                    class="s8-icon w-9 h-9 object-contain hover:scale-110 transition duration-300">
+                                <span class="text-xs text-gray-600">CSS</span>
+                            </div>
 
-        <div class="flex flex-col items-center gap-2">
-            <img src="css.png"
-                alt="CSS"
-                class="s8-icon w-9 h-9 object-contain hover:scale-110 transition duration-300">
-            <span class="text-xs text-gray-600">CSS</span>
-        </div>
+                        </div>
+                    </div>
 
-    </div>
-</div>
                     <!-- PARTITION 3: DOWNLOAD CV & SOCIAL ICONS -->
                     <div class="assemble-card assemble-left delay-5 bg-white rounded-3xl py-6 px-6 shadow-lg border border-gray-200 flex flex-col items-center">
                         <!-- Download CV Button -->
@@ -461,7 +453,7 @@
                                 <img 
                                     src="call.png" 
                                     alt="phone"
-                                    class="w-08 h-08 object-contain transition duration-300 group-hover:invert"
+                                    class="w-8 h-8 object-contain transition duration-300 group-hover:invert"
                                 >
                             </a>
                             <a 
@@ -486,7 +478,7 @@
                                     class="w-12 h-12 object-contain transition duration-300 group-hover:invert"
                                 >
                             </a>
-                             <a 
+                            <a 
                                 href="https://www.behance.net/sumitmane434" 
                                 class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-blue-600 transition duration-300 shadow-sm group"
                                 title="Behance"
@@ -497,7 +489,7 @@
                                     class="w-6 h-6 object-contain transition duration-300 group-hover:invert"
                                 >
                             </a>
-                              <a 
+                            <a 
                                 href="https://dribbble.com/Sumit434" 
                                 class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-blue-600 transition duration-300 shadow-sm group"
                                 title="Dribble"
@@ -512,80 +504,81 @@
                     </div>
                 </div>
 
-      <!-- MIDDLE SECTION - PROJECTS -->
-<div class="lg:col-span-1">
-    <div class="s8-projects-card assemble-card assemble-up delay-2 bg-white rounded-3xl py-5 px-6 shadow-lg border border-gray-200 flex flex-col h-[800px]">
+                <!-- MIDDLE SECTION - PROJECTS -->
+                <div class="lg:col-span-1">
+                    <div class="s8-projects-card assemble-card assemble-up delay-2 bg-white rounded-3xl py-5 px-6 shadow-lg border border-gray-200 flex flex-col h-[800px]">
 
-        <!-- Title -->
-        <h3 class="text-2xl font-bold text-blue-600 mb-4">Projects</h3>
+                        <!-- Title -->
+                        <h3 class="text-2xl font-bold text-blue-600 mb-4">Projects</h3>
 
-        <!-- Cards Wrapper -->
-        <div class="s8-project-list flex flex-col gap-4 flex-1 min-h-0 group">
+                        <!-- Cards Wrapper -->
+                        <div class="s8-project-list flex flex-col gap-4 flex-1 min-h-0 group">
 
-            <!-- Project Card 1 -->
-            <a href="https://www.behance.net/gallery/236468355/Freelancer-Landing-Page-and-Mobile-App-UI"
-               class="relative rounded-2xl overflow-hidden shadow-md 
-                      flex-[1] group-hover:flex-[0.85] hover:!flex-[1.6] 
-                      transition-all duration-500 ease-in-out">
+                            <!-- Project Card 1 -->
+                            <a href="https://www.behance.net/gallery/236468355/Freelancer-Landing-Page-and-Mobile-App-UI"
+                               class="relative rounded-2xl overflow-hidden shadow-md 
+                                      flex-[1] group-hover:flex-[0.85] hover:!flex-[1.6] 
+                                      transition-all duration-500 ease-in-out">
 
-                <img src="freelancer.jpg"
-                     class="w-full h-full object-cover"
-                >
+                                <img src="freelancer.jpg"
+                                     class="w-full h-full object-cover"
+                                >
 
-                <div class="s8-project-overlay absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition duration-300 flex flex-col justify-between p-4">
-                    <div>
-                        <h4 class="text-white font-semibold mb-1">Freelancer- Landing Page & Mobile App UI</h4>
-                        <p class="text-sm text-gray-200">Modern Hiring Experience</p>
+                                <div class="s8-project-overlay absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition duration-300 flex flex-col justify-between p-4">
+                                    <div>
+                                        <h4 class="text-white font-semibold mb-1">Freelancer- Landing Page & Mobile App UI</h4>
+                                        <p class="text-sm text-gray-200">Modern Hiring Experience</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Project Card 2 -->
+                            <a href="https://www.behance.net/gallery/236989889/Expenso-Modern-designed-wallet-expense-tracker-app"
+                               class="relative rounded-2xl overflow-hidden shadow-md 
+                                      flex-[1] group-hover:flex-[0.85] hover:!flex-[1.6] 
+                                      transition-all duration-500 ease-in-out">
+
+                                <img src="expenso.png"
+                                     class="w-full h-full object-cover top-2"
+                                >
+
+                                <div class="s8-project-overlay absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition duration-300 flex flex-col justify-between p-4">
+                                    <div>
+                                        <h4 class="text-white font-semibold mb-1">Expenso- E-wallet & expense tracker app</h4>
+                                        <p class="text-sm text-gray-200">Modern UI design</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Project Card 3 -->
+                            <a href="https://www.behance.net/gallery/245979419/Numor-Social-media"
+                               class="relative rounded-2xl overflow-hidden shadow-md 
+                                      flex-[1] group-hover:flex-[0.85] hover:!flex-[1.6] 
+                                      transition-all duration-500 ease-in-out">
+
+                                <img src="bepo.webp"
+                                     class="w-full h-full object-cover"
+                                >
+
+                                <div class="s8-project-overlay absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition duration-300 flex flex-col justify-between p-4">
+                                    <div>
+                                        <h4 class="text-white font-semibold mb-1">Numor- Social media</h4>
+                                        <p class="text-sm text-gray-200">Cosmetic digital ad creatives</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+
+                        <!-- SEE ALL PROJECTS -->
+                        <a href="https://www.behance.net/sumitmane434"
+                           class="mt-6 text-center text-blue-600 font-medium hover:underline">
+                            See all projects →
+                        </a>
+
                     </div>
                 </div>
-            </a>
 
-            <!-- Project Card 2 -->
-            <a href="https://www.behance.net/gallery/236989889/Expenso-Modern-designed-wallet-expense-tracker-app"
-               class="relative rounded-2xl overflow-hidden shadow-md 
-                      flex-[1] group-hover:flex-[0.85] hover:!flex-[1.6] 
-                      transition-all duration-500 ease-in-out">
-
-                <img src="expenso.png"
-                     class="w-full h-full object-cover top-2"
-                >
-
-                <div class="s8-project-overlay absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition duration-300 flex flex-col justify-between p-4">
-                    <div>
-                        <h4 class="text-white font-semibold mb-1">Expenso- E-wallet & expense tracker app</h4>
-                        <p class="text-sm text-gray-200">Modern UI design</p>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Project Card 3 -->
-            <a href="https://www.behance.net/gallery/245979419/Numor-Social-media"
-               class="relative rounded-2xl overflow-hidden shadow-md 
-                      flex-[1] group-hover:flex-[0.85] hover:!flex-[1.6] 
-                      transition-all duration-500 ease-in-out">
-
-                <img src="bepo.webp"
-                     class="w-full h-full object-cover"
-                >
-
-                <div class="s8-project-overlay absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition duration-300 flex flex-col justify-between p-4">
-                    <div>
-                        <h4 class="text-white font-semibold mb-1">Numor- Social media</h4>
-                        <p class="text-sm text-gray-200">Cosmetic digital ad creatives</p>
-                    </div>
-                </div>
-            </a>
-
-        </div>
-
-        <!-- SEE ALL PROJECTS -->
-        <a href="https://www.behance.net/sumitmane434"
-           class="mt-6 text-center text-blue-600 font-medium hover:underline">
-            See all projects →
-        </a>
-
-    </div>
-</div>
                 <!-- RIGHT SECTION - EXPERIENCE -->
                 <div class="lg:col-span-1">
                     <div class="s8-experience-card assemble-card assemble-right delay-4 bg-white rounded-3xl py-5 px-6 shadow-lg border border-gray-200 h-full flex flex-col">
@@ -613,7 +606,7 @@
                                 <p class="text-sm italic text-gray-600 mb-3">Tidal 7</p>
                                 <p class="text-sm text-gray-600 leading-relaxed">
                                     Experience across graphic designing projects, branding, and digital creatives, with hands-on UI/UX asset building experience.
-
+                                </p>
                             </div>
 
                             <!-- Experience Item 3 -->
@@ -625,12 +618,12 @@
                                 <p class="text-sm italic text-gray-600 mb-3">Seasons by Shalini</p>
                                 <p class="text-sm text-gray-600 leading-relaxed">
                                     Video Editor skilled in video editing, motion graphics, visual storytelling, and creating engaging digital content with a strong sense of timing and composition.
-
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
