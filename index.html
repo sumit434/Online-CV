@@ -164,14 +164,33 @@
                 bottom: 0 !important;
             }
 
-            /* Skills: allow natural wrapping on every phone width. */
+            /* Skills: ALWAYS keep all 6 icons on one line.
+               Icons shrink as the available phone width gets smaller. */
             .s8-skills {
-                gap: clamp(0.75rem, 4vw, 1rem) !important;
+                flex-wrap: nowrap !important;
+                gap: clamp(0.25rem, 2vw, 0.75rem) !important;
+                width: 100%;
+            }
+
+            .s8-skills > div {
+                flex: 1 1 0;
+                min-width: 0;
             }
 
             .s8-icon {
-                width: clamp(1.75rem, 8vw, 2.25rem) !important;
-                height: clamp(1.75rem, 8vw, 2.25rem) !important;
+                width: clamp(1.35rem, 7vw, 2.25rem) !important;
+                height: clamp(1.35rem, 7vw, 2.25rem) !important;
+                flex-shrink: 1;
+            }
+
+            .s8-skills span {
+                display: block;
+                width: 100%;
+                font-size: clamp(0.52rem, 2.3vw, 0.75rem);
+                line-height: 1.1;
+                text-align: center;
+                overflow-wrap: normal;
+                word-break: normal;
             }
 
             /* Social icons scale slightly on very narrow phones. */
@@ -273,7 +292,13 @@
             }
 
             .s8-skills {
-                gap: 0.65rem !important;
+                gap: 0.2rem !important;
+                flex-wrap: nowrap !important;
+            }
+
+            .s8-icon {
+                width: clamp(1.25rem, 6.8vw, 1.6rem) !important;
+                height: clamp(1.25rem, 6.8vw, 1.6rem) !important;
             }
         }
 
